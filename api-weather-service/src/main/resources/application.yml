@@ -1,6 +1,5 @@
 server:
   port: 8090
-
 spring:
   application:
     name: api-weather-service
@@ -8,11 +7,16 @@ management:
   security:
     context-path: /admin
     enabled: false
-
 service:
-   getHistoricUri: api/v1/weather/history/city/{city}/prediction/{prediction}
-   getPredictionUri: api/v1/weather/{city}
+  getHistoricUri: api/v1/weather/history/city/{city}/prediction/{prediction}
+  getPredictionUri: api/v1/weather/{city}
 
 dependencies:
-   weatherServicePort: ${WEATHER_SERVICE_PORT:8091}
-   weatherServiceId: ${WEATHER_SERVICE_ID:localhost}
+  weatherServicePort: ${WEATHER_SERVICE_PORT:8091}
+  weatherServiceId: ${WEATHER_SERVICE_ID:localhost}
+  weatherServiceBasePath: http://localhost:8091/api
+
+logging:
+  level:
+    ROOT: INFO
+    com.stratio: DEBUG

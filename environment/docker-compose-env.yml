@@ -15,3 +15,31 @@ services:
     depends_on:
       - postgresbdc
     cpu_shares: 10
+
+  zookeeper:
+    image: zookeeper
+    container_name: zookeeper
+    hostname: zookeeper
+    ports:
+      - 2181:2181
+    cpu_shares: 51
+
+  kafka:
+    image: kafka
+    container_name: kafka
+    hostname: kafka
+    ports:
+      - 9092:9092
+      - 9001:9000
+    depends_on:
+      - zookeeper
+    cpu_shares: 102
+
+  deployment:
+    image: deployment
+    container_name: deployment
+    hostname: deployment
+    cpu_shares: 10
+    links:
+      - kafka
+      - postgresbdc

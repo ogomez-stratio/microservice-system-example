@@ -1,0 +1,21 @@
+server:
+  port: 8092
+
+management:
+  security:
+    enabled: false
+#spring:
+#  cloud:
+#    stream:
+#      kafka:
+##        binder:
+##          brokers: kafka:9092
+#        bindings:
+#          input:
+#            destination: weather
+#            autoCreateTopics: false
+app:
+  dasWeatherServiceId: localhost
+  dasWeatherServicePort: 8092
+  saveResponse: /api/v1/weatherAudit
+  getHistoric: /api/v1/weatherAudit/city({city}/prediction/{prediction}

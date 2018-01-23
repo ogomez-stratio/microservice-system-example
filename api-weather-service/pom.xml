@@ -18,6 +18,8 @@
     <docker.spotify.version>1.0.0</docker.spotify.version>
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
+    <feign.version>9.5.1</feign.version>
+
   </properties>
   <dependencies>
 
@@ -58,6 +60,13 @@
       <artifactId>springfox-staticdocs</artifactId>
       <version>2.6.1</version>
       <scope>test</scope>
+    </dependency>
+
+    <!-- Feign -->
+
+    <dependency>
+      <groupId>org.springframework.cloud</groupId>
+      <artifactId>spring-cloud-starter-feign</artifactId>
     </dependency>
 
   </dependencies>

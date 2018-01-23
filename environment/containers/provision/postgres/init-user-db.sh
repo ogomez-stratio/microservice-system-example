@@ -15,7 +15,7 @@ echo "Creating Postgres users and databases..."
 psql -v ON_ERROR_STOP=1 postgresql://postgres:weatheruser@postgresbdc:5432 -f user_creation.sql
 
 ###############################  WEATHER DB ############################################################
-# sanitas database creation (if not exist) cannot be a file or a function, postgresql don't like database creation in function
+#database creation (if not exist) cannot be a file or a function, postgresql don't like database creation in function
 psql -v ON_ERROR_STOP=1 postgresql//postgres:weatheruser@postgresbdc:5432 -c "SELECT 1 FROM pg_database WHERE datname = 'weather'" |
 grep -q 1 ||
 psql -v ON_ERROR_STOP=1 postgresql://postgres:weatheruser@postgresbdc:5432 -c "CREATE DATABASE weather"

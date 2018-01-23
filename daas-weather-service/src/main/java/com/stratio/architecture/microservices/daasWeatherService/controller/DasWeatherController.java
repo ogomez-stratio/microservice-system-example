@@ -5,23 +5,25 @@ import com.stratio.architecture.microservices.daasWeatherService.service.DasWeat
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
-
 import java.net.URI;
 import java.util.List;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/api/v1")
 @Api(value = "EOS Weather DAS Service", produces = MediaType.APPLICATION_JSON_VALUE)
+@Slf4j
 public class DasWeatherController {
 
   private final DasWeatherService service;
-  private static final Logger log = LoggerFactory.getLogger(DasWeatherController.class);
-
 
   @PostMapping("/weatherAudit")
   @ApiOperation("Save a forecast of a City in audit table")

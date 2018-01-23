@@ -19,11 +19,11 @@ RUN echo "oracle-java8-installer shared/accepted-oracle-license-v1-1 select true
 RUN sudo apt-get -y update
 RUN sudo apt-get install -yq --force-yes oracle-java8-installer
 
-# Download Kafka and install it in /opt/sds
-#RUN wget http://apache.rediris.es/kafka/0.10.0.1/kafka_2.11-0.10.0.1.tgz -O /opt/kafka_2.11-0.10.0.1.tgz
-#RUN cd /opt/ && tar xzvf kafka_2.11-0.10.0.1.tgz
-#RUN mkdir /opt/sds
-#RUN ln -s /opt/kafka_2.11-0.10.0.1 /opt/sds/kafka
+#Download Kafka and install it in /opt/sds
+RUN wget http://apache.rediris.es/kafka/1.0.0/kafka_2.12-1.0.0.tgz -O /opt/kafka_2.12-1.0.0.tgz
+RUN cd /opt/ && tar xzvf kafka_2.12-1.0.0.tgz
+RUN mkdir /opt/sds
+RUN ln -s /opt/kafka_2.12-1.0.0 /opt/sds/kafka
 
 # Download Hadoop and install it in /opt/sds/hadoop
 #RUN wget http://apache.rediris.es/hadoop/common/hadoop-2.7.2/hadoop-2.7.2.tar.gz -O /opt/hadoop-2.7.2.tar.gz
@@ -41,7 +41,7 @@ RUN sudo apt-get install -yq --force-yes oracle-java8-installer
 #ENV JAVA_HOME=/usr/lib/jvm/java-8-oracle/
 #RUN sed -i '/export JAVA_HOME=\${JAVA_HOME}/c export JAVA_HOME=/usr/lib/jvm/java-8-oracle/' /opt/sds/hadoop/etc/hadoop/hadoop-env.sh
 
-# Install and configure SSH server (needed by hadoop)
+#Install and configure SSH server (needed by hadoop)
 RUN sudo apt-get -y install openssh-server
 RUN echo "root:stratio" | sudo chpasswd
 RUN sed -i "/PermitRootLogin without-password/s/^/#/" /etc/ssh/sshd_config
