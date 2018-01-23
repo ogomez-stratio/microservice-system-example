@@ -17,16 +17,22 @@ if [[ "$PROFILES_ACTIVE" == "dev" ]]
 then
     #base
     docker build -t base containers/base/
+    #zookeeper
+    docker build -t zookeeper containers/zookeeper/
+    #kafka
+    docker build -t kafka containers/kafka/
+    #deployment
+    docker build -t deployment containers/deployment/
     #provision
     docker build -t provision containers/provision/
 fi
 
-#api-weather-service
-cd ../api-weather-service      && mvn clean package docker:build && cd $CURRENT_DIR
-#weather-service
-cd ../weather-service          && mvn clean package docker:build && cd $CURRENT_DIR
-#daas-service
-cd ../daas-weather-service     && mvn clean package docker:build && cd $CURRENT_DIR
+##api-weather-service
+#cd ../api-weather-service      && mvn clean package docker:build && cd $CURRENT_DIR
+##weather-service
+#cd ../weather-service          && mvn clean package docker:build && cd $CURRENT_DIR
+##daas-service
+#cd ../daas-weather-service     && mvn clean package docker:build && cd $CURRENT_DIR
 
 
 echo "**********************************************"

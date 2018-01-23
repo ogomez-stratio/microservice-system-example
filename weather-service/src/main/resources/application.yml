@@ -9,10 +9,12 @@ management:
     enabled: false
 service:
    baseUrl: https://query.yahooapis.com
-   path: /v1/public/yql
-   query: select%20*%20from%20weather.forecast%20where%20woeid%20%3D%
+   path: v1/public/yql
+#   query: select%20*%20from%20weather.forecast%20where%20woeid%20%3D%
+   query: select * from weather.forecast where woeid=
    format: json
    dasWeatherServiceId: localhost
    dasWeatherServicePort: 8092
    saveResponse: /api/v1/weatherAudit
    getHistoric: /api/v1/weatherAudit/city({city}/prediction/{prediction}
+   auditServiceBasePath: http://localhost:8092/api
