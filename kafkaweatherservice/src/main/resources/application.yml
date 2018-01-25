@@ -4,16 +4,11 @@ server:
 management:
   security:
     enabled: false
-#spring:
-#  cloud:
-#    stream:
-#      kafka:
-##        binder:
-##          brokers: kafka:9092
-#        bindings:
-#          input:
-#            destination: weather
-#            autoCreateTopics: false
+kafka:
+  topic: weather
+  bootstrapServers: kafka:9092
+  consumerGroup: local
+
 app:
   dasWeatherServiceId: localhost
   dasWeatherServicePort: 8092

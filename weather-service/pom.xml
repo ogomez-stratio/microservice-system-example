@@ -19,7 +19,6 @@
     <docker.spotify.version>1.0.0</docker.spotify.version>
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
-    <docker.image.prefix>eos</docker.image.prefix>
   </properties>
   <!-- Add typical dependencies for a web application -->
 
@@ -64,32 +63,4 @@
       <artifactId>spring-cloud-starter-feign</artifactId>
     </dependency>
   </dependencies>
-  <build>
-    <plugins>
-      <plugin>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-maven-plugin</artifactId>
-      </plugin>
-      <plugin>
-        <groupId>com.spotify</groupId>
-        <artifactId>docker-maven-plugin</artifactId>
-        <version>${docker.spotify.version}</version>
-        <configuration>
-          <imageName>${project.artifactId}</imageName>
-          <dockerDirectory>src/main/docker</dockerDirectory>
-          <resources>
-            <resource>
-              <targetPath>/</targetPath>
-              <directory>${project.build.directory}</directory>
-              <include>${project.build.finalName}.jar</include>
-            </resource>
-          </resources>
-          <forceTags>true</forceTags>
-          <buildArgs>
-            <JAR_VERSION>${project.version}</JAR_VERSION>
-          </buildArgs>
-        </configuration>
-      </plugin>
-    </plugins>
-  </build>
 </project>
